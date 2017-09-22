@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MisContactos</string>
+    <string name="nombrePersona">Jorge Soasti</string>
+    <string name="telefonoPersona">0984687554</string>
+    <string name="emailPersona">jorgesoasti@gmail.com</string>
+    <string name="pNombre">Nombre</string>
+    <string name="pTelefono">Telefono</string>
+    <string name="pEmail">Email</string>
+</resources>

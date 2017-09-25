@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contactos = new ArrayList<Contacto>();
+        contactos = new ArrayList<>();
 
         contactos.add(new Contacto("Jorge Soasti", "0984998774", "jorge@gmail.com"));
         contactos.add(new Contacto("Karen Perez", "0984933374", "karen@gmail.com"));
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         }
         
         ListView lstContactos = (ListView) findViewById(R.id.lstListaContactos);
-        lstContactos.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombresContacto));
+        lstContactos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nombresContacto));
 
         lstContactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(getResources().getString(R.string.pTelefono),contactos.get(i).getTelefono());
                 intent.putExtra(getResources().getString(R.string.pEmail),contactos.get(i).getEmail());
                 startActivity(intent);
+                finish();
             }
         });
     }

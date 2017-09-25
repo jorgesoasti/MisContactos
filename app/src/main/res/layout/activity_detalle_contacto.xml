@@ -22,7 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:onClick="llamar">
 
         <ImageView
             android:id="@+id/imgvTelefono"
@@ -45,7 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:onClick="enviarEmail">
 
         <ImageView
             android:id="@+id/imgvEmail"
@@ -59,7 +61,7 @@
             android:layout_height="wrap_content"
             android:text="@string/emailPersona"
             android:layout_gravity="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginLeft="10dp"/>
 
     </LinearLayout>

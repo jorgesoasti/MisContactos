@@ -1,4 +1,4 @@
 <resources>
-    <dimen name="nombreContacto">33dp</dimen>
-    <dimen name="telefonoContacto">20dp</dimen>
+    <dimen name="nombreContacto">33sp</dimen>
+    <dimen name="telefonoContacto">20sp</dimen>
 </resources>

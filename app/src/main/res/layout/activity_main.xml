@@ -5,11 +5,17 @@
     android:layout_height="match_parent"
     tools:context="com.jorgesoasti.miscontactos.MainActivity">
 
-    <ListView
+    <!--<ListView
         android:id="@+id/lstListaContactos"
         android:layout_width="368dp"
         android:layout_height="495dp">
 
-    </ListView>
+    </ListView>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvContactos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 
 </RelativeLayout>

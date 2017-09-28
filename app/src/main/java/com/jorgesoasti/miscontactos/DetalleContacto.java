@@ -28,9 +28,9 @@ public class DetalleContacto extends AppCompatActivity {
         String telefono = parametros.getString(getResources().getString(R.string.pTelefono));
         String email = parametros.getString(getResources().getString(R.string.pEmail));
 
-        tvNombre = (TextView) findViewById(R.id.tvNombrePersona);
-        tvTelefono = (TextView) findViewById(R.id.tvTelefonoPersona);
-        tvEmail = (TextView) findViewById(R.id.tvEmailPersona);
+        tvNombre = findViewById(R.id.tvNombrePersona);
+        tvTelefono = findViewById(R.id.tvTelefonoPersona);
+        tvEmail = findViewById(R.id.tvEmailPersona);
 
         tvNombre.setText(nombre);
         tvTelefono.setText(telefono);

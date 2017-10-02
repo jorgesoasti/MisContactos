@@ -1,49 +1,46 @@
 package com.jorgesoasti.miscontactos;
 
-import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+
+import com.jorgesoasti.miscontactos.adapter.ContactoAdaptador;
+import com.jorgesoasti.miscontactos.adapter.PageAdapter;
+import com.jorgesoasti.miscontactos.fragment.PerfilFragment;
+import com.jorgesoasti.miscontactos.fragment.RecyclerViewFragment;
+import com.jorgesoasti.miscontactos.poyo.Contacto;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Contacto> contactos;
-    private RecyclerView listaContactos;
-    public ContactoAdaptador adaptador;
+    private Toolbar toolbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = (Toolbar) findViewById(R.id.tlbToolbar);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.vpViewPager);
+
+        setUpViewPager();
+
+        /*
         Toolbar miActionBar = findViewById(R.id.tlbMiActionBar);
         setSupportActionBar(miActionBar);
+        */
 
-        listaContactos = findViewById(R.id.rvContactos);
+        /* Recycler View
 
-        //Contactos en Linear Layout Manager
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        //Contactos en Grid Layout Manager
-        //GridLayoutManager glm = new GridLayoutManager(this, 2);
-
-        //listaContactos.setLayoutManager(glm);
-        listaContactos.setLayoutManager(llm);
-
-        inicializarListaContactos();
-
-        inicializarAdaptador();
+        */
 
         /*
         ArrayList<String> nombresContacto = new ArrayList<>();
@@ -69,21 +66,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+
+        if (toolbar != null){
+            setSupportActionBar(toolbar);
+        }
     }
 
-    public void inicializarAdaptador(){
-        adaptador = new ContactoAdaptador(contactos, this);
-        listaContactos.setAdapter(adaptador);
+    private ArrayList<Fragment> agregarFragments(){
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        fragments.add(new RecyclerViewFragment());
+        fragments.add(new PerfilFragment());
+        return fragments;
     }
 
-    public void inicializarListaContactos(){
+    private void setUpViewPager(){
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
+        tabLayout.setupWithViewPager(viewPager);
 
-        contactos = new ArrayList<>();
-
-        contactos.add(new Contacto(R.drawable.contacto1,"Jorge Soasti", "0984998774", "jorge@gmail.com"));
-        contactos.add(new Contacto(R.drawable.contacto1,"Karen Perez", "0984933374", "karen@gmail.com"));
-        contactos.add(new Contacto(R.drawable.contacto1,"Marco Lopez", "0984922274", "marco@gmail.com"));
-        contactos.add(new Contacto(R.drawable.contacto1,"María Jimenez", "0984991114", "maria@gmail.com"));
-        contactos.add(new Contacto(R.drawable.contacto1,"Antonella Pesantez", "0984487774", "anto@gmail.com"));
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_contacts);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_contact_detail);
     }
+
 }

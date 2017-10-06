@@ -45,6 +45,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         holder.imgFotoCV.setImageResource(contacto.getFoto());
         holder.tvNombreCV.setText(contacto.getNombre());
         holder.tvTelefonoCV.setText(contacto.getTelefono());
+        holder.tvLikes.setText(String.valueOf(contacto.getLikes()) + " Likes");
 
         holder.imgFotoCV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private TextView tvNombreCV;
         private TextView tvTelefonoCV;
         private ImageButton btnLike;
+        private TextView tvLikes;
 
         public ContactoViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +86,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             tvNombreCV = itemView.findViewById(R.id.tvNombreCV);
             tvTelefonoCV = itemView.findViewById(R.id.tvTelefonoCV);
             btnLike = itemView.findViewById(R.id.btnLike);
+            tvLikes = itemView.findViewById(R.id.tvLikes);
         }
     }
 }

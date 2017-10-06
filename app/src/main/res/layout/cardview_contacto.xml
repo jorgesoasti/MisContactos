@@ -22,28 +22,31 @@
             android:src="@drawable/fotocontacto"
             android:scaleType="centerCrop"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:padding="10dp">
 
             <ImageButton
                 android:id="@+id/btnLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/like" />
+                android:background="@drawable/like"
+                android:layout_alignParentLeft="true"/>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
 
                 <TextView
                     android:id="@+id/tvNombreCV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/pNombre"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"/>
 
@@ -57,7 +60,18 @@
 
             </LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pLikes"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
 
 
 

@@ -4,12 +4,20 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetalleContacto extends AppCompatActivity {
 
@@ -35,6 +43,46 @@ public class DetalleContacto extends AppCompatActivity {
         tvNombre.setText(nombre);
         tvTelefono.setText(telefono);
         tvEmail.setText(email);
+
+        //Transisiones
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            //Slide slide = new Slide(); de abajo hacia arriba
+            Slide slide = new Slide(Gravity.RIGHT); //desde la derecha
+            slide.setDuration(1000);
+            getWindow().setEnterTransition(slide); //cuando entra la actividad
+            //cuando esta terminando la transicion
+            slide.addListener(new Transition.TransitionListener() {
+                @Override
+                public void onTransitionStart(Transition transition) {
+                    Toast.makeText(DetalleContacto.this, "Empezando", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onTransitionEnd(Transition transition) {
+                    Toast.makeText(DetalleContacto.this, "Terminado", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onTransitionCancel(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionPause(Transition transition) {
+
+                }
+
+                @Override
+                public void onTransitionResume(Transition transition) {
+
+                }
+            });
+
+            getWindow().setReenterTransition(new Fade()); //cuando regresa a la actividad anterior
+
+        }else{
+
+        }
     }
 
     public void llamar(View v) {

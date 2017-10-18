@@ -2,7 +2,10 @@ package com.jorgesoasti.miscontactos.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +59,19 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
                 intent.putExtra(activity.getResources().getString(R.string.pNombre), contacto.getNombre());
                 intent.putExtra(activity.getResources().getString(R.string.pTelefono), contacto.getTelefono());
                 intent.putExtra(activity.getResources().getString(R.string.pEmail), contacto.getEmail());
-                activity.startActivity(intent);
+
+                //Transisiones
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                    //Si se encuentra en una actividad usar getWindow() directamente. En las partes
+                    //que está colocado activity, si se encuentra en una actividad se puede colocar this.
+                    Explode explode = new Explode();
+                    explode.setDuration(1000);
+                    activity.getWindow().setExitTransition(explode);
+                    //El parametro "" (vacio) se usa para transiciones de imagenes como un efecto de zoom entre actividades
+                    activity.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(activity, view, "").toBundle());
+                }else{
+                    activity.startActivity(intent);
+                }
             }
         });
 

@@ -7,7 +7,6 @@
     <string name="pTelefono">Telefono</string>
     <string name="pEmail">Email</string>
     <string name="pLikes">0 Likes</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook_app_id">1967182316855975</string>
 </resources>
